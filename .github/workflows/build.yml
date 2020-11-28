@@ -5,17 +5,14 @@ on:
   - pull_request
 
 jobs:
-  
+ 
   docker-dev:
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v2
+      - name: Docker login
+        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
       - name: Build Image
-        run: docker build . -f dev.Dockerfile
-
-  platform:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build Image
-        run: docker build . -f platform.Dockerfile
+        run: docker build . -f dev.Dockerfile andrewnijmeh/pygit .
+      - name: Push Image 
+        run: docker push andrewnijmeh/pygit

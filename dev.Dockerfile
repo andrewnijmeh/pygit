@@ -4,7 +4,6 @@ COPY . /gitautomation
 WORKDIR /gitautomation
 
 # Install deps
-
 RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
 
