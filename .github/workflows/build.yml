@@ -5,14 +5,7 @@ on:
   - pull_request
 
 jobs:
-  docker: 
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build Image
-        run: docker build .
-
+  
   docker-dev:
     runs-on: ubuntu-latest
     steps: 
